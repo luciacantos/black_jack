@@ -16,4 +16,27 @@ cartas = {
 
 print("Valor de cada carta: ")
 for carta in sorted(cartas.keys()):
-    print("la carta {} vale {}".format(carta, cartas[carta]))
+    print("La carta {} vale {}".format(carta, cartas[carta]))
+
+print("Inicio del juego: ")
+lista_cartas = list(cartas)
+
+from random import choice, sample
+
+## hacer que la persona elija dos cartas y sumar su valor
+
+print("Ha seleccionado:", end=" ")
+carta = choice(lista_cartas)
+score = cartas[carta]
+print(carta, end=" ")
+carta = choice(lista_cartas)
+score += cartas[carta]
+print(carta, end=" ")
+print(" >>> su puntuación es de", score)
+
+
+main_banca = sample(lista_cartas, 2)
+score_banca = sum(cartas[carta] for carta in main_banca)
+print("La banca tiene: {} {}  >> su score es {}".format(main_banca[0],main_banca[1], score_banca))
+
+## sumar los valores de la persona y de la banca y si tiene mas de 21 ha perdido y si tiene menos o 21 ha ganado
