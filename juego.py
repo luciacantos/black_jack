@@ -55,7 +55,7 @@ print("Pulse enter para otener la puntuación del Crupier:")
 input()
 main_crupier = sample(lista_cartas, 2)
 puntuacion_crupier = sum(cartas[carta] for carta in main_crupier)
-print("El crupier reparte dos cartas: {} {}  obteniendo una puntuación de {} puntos".format(main_crupier[0],main_crupier[1], puntuacion_crupier))
+print("El crupier levanta dos cartas: {} {}  obteniendo una puntuación de {} puntos".format(main_crupier[0],main_crupier[1], puntuacion_crupier))
 
 print("")
 
