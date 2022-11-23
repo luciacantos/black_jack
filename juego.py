@@ -1,4 +1,5 @@
 from random import choice, sample
+
 #diccionario de las cartas
 cartas = {
     chr(0x1f0a1): 11,
