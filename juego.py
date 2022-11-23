@@ -1,3 +1,5 @@
+from random import choice, sample
+#diccionario de las cartas
 cartas = {
     chr(0x1f0a1): 11,
     chr(0x1f0a2): 2,
@@ -13,30 +15,61 @@ cartas = {
     chr(0x1f0ad): 10,
     chr(0x1f0ae): 10,
 }
-
+#lista de las cartas con el dibujo y su valor
 print("Valor de cada carta: ")
 for carta in sorted(cartas.keys()):
     print("La carta {} vale {}".format(carta, cartas[carta]))
 
-print("Inicio del juego: ")
+print("")
+print("Inicio del juego.")
 lista_cartas = list(cartas)
 
-from random import choice, sample
+print("")
 
-## hacer que la persona elija dos cartas y sumar su valor
-
-print("Ha seleccionado:", end=" ")
+## hacer que la persona elija dos cartas (de una en una) y sumar su valor
+## primero enseñar el dibujo de la carta y después el valor
+print("Pulse Enter para obterner su primera carta: ")
+input()
+print("Su primera carta es:", end=" ")
 carta = choice(lista_cartas)
-score = cartas[carta]
+puntuacion = cartas[carta]
 print(carta, end=" ")
+print("")
+print("Por ahora tiene una puntación de", puntuacion,"puntos")
+print("")
+
+print("Pulse Enter para obterner su segunda carta: ")
+input()
+print("Su segunda carta es:", end=" ")
 carta = choice(lista_cartas)
-score += cartas[carta]
+puntuacion += cartas[carta]
 print(carta, end=" ")
-print(" >>> su puntuación es de", score)
+print("")
+print("Sumando las dos cartas tiene una puntuación de", puntuacion,"puntos")
+print("")
 
+#el crupier saca dos cartas
+#primero enseñar el dibujo de la carta y después el valor de la suma de las dos
+print("Pulse enter para otener la puntuación del Crupier:")
+input()
+main_crupier = sample(lista_cartas, 2)
+puntuacion_crupier = sum(cartas[carta] for carta in main_crupier)
+print("El crupier reparte dos cartas: {} {}  sus valores suman {}".format(main_crupier[0],main_crupier[1], puntuacion_crupier))
 
-main_banca = sample(lista_cartas, 2)
-score_banca = sum(cartas[carta] for carta in main_banca)
-print("La banca tiene: {} {}  >> su score es {}".format(main_banca[0],main_banca[1], score_banca))
+print("")
 
-## sumar los valores de la persona y de la banca y si tiene mas de 21 ha perdido y si tiene menos o 21 ha ganado
+#quien ha ganado
+if puntuacion > puntuacion_crupier:
+    if puntuacion <= 21:
+        print("¡HAS GANADO!")
+    else:
+        #si se pasa de 21 el jugador (único caso posible el 22)
+        print("¡HAS PERDIDO!")
+elif puntuacion < puntuacion_crupier:
+    if puntuacion_crupier <= 21:
+        print("¡HAS PERDIDO!")
+    else:
+        #si se pasa de 21 el crupier (único caso posible el 22)
+        print("¡HAS GANADO!")
+else:
+    print("¡EMPATE! Has obtenido los mismos puntos que el crupier")
