@@ -36,7 +36,7 @@ carta = choice(lista_cartas)
 puntuacion = cartas[carta]
 print(carta, end=" ")
 print("")
-print("Por ahora tiene una puntación de", puntuacion,"puntos")
+print("Por ahora tiene una puntación de", puntuacion,"puntos.")
 print("")
 
 print("Pulse Enter para obterner su segunda carta: ")
@@ -46,7 +46,7 @@ carta = choice(lista_cartas)
 puntuacion += cartas[carta]
 print(carta, end=" ")
 print("")
-print("Sumando las dos cartas tiene una puntuación de", puntuacion,"puntos")
+print("Sumando las dos cartas tiene una puntuación de", puntuacion,"puntos.")
 print("")
 
 #el crupier saca dos cartas
@@ -55,7 +55,7 @@ print("Pulse enter para otener la puntuación del Crupier:")
 input()
 main_crupier = sample(lista_cartas, 2)
 puntuacion_crupier = sum(cartas[carta] for carta in main_crupier)
-print("El crupier reparte dos cartas: {} {}  sus valores suman {}".format(main_crupier[0],main_crupier[1], puntuacion_crupier))
+print("El crupier reparte dos cartas: {} {}  obteniendo una puntuación de {} puntos".format(main_crupier[0],main_crupier[1], puntuacion_crupier))
 
 print("")
 
@@ -73,4 +73,4 @@ elif puntuacion < puntuacion_crupier:
         #si se pasa de 21 el crupier (único caso posible el 22)
         print("¡HAS GANADO!")
 else:
-    print("¡EMPATE! Has obtenido los mismos puntos que el crupier")
+    print("¡EMPATE! Has obtenido los mismos puntos que el crupier.")
